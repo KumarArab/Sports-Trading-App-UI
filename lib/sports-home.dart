@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sportsapp/elements.dart';
 import 'package:sportsapp/sizeconfig.dart';
+import 'package:sportsapp/sports-details.dart';
 import 'package:sportsapp/style.dart';
 
 class SportsHome extends StatelessWidget {
@@ -10,46 +12,7 @@ class SportsHome extends StatelessWidget {
     SizeConfig().init(context);
     return Scaffold(
         backgroundColor: Style.backgroundColor,
-        appBar: AppBar(
-          backgroundColor: Style.backgroundColor,
-          elevation: 0,
-          leading: Container(
-            margin: const EdgeInsets.all(15.0),
-            child: SvgPicture.asset(
-              "assets/menu.svg",
-            ),
-          ),
-          centerTitle: true,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("Markets",
-                  style: Theme.of(context).textTheme.headline5.copyWith(
-                      color: Style.appWhite,
-                      fontWeight: FontWeight.w500,
-                      letterSpacing: 1.5)),
-              SizedBox(
-                width: 5,
-              ),
-              CircleAvatar(
-                backgroundColor: Style.appGreen,
-                radius: 3,
-              )
-            ],
-          ),
-          actions: [
-            CircleAvatar(
-              backgroundColor: Style.backgroundColor2,
-              child: SvgPicture.asset(
-                "assets/user.svg",
-                color: Style.appWhite,
-              ),
-            ),
-            SizedBox(
-              width: 15,
-            )
-          ],
-        ),
+        appBar: appBar(context),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,192 +61,197 @@ class SportsHome extends StatelessWidget {
                     style: Theme.of(context).textTheme.headline4.copyWith(
                         color: Style.appWhite, fontWeight: FontWeight.w700)),
               ),
-              Container(
-                width: SizeConfig.width,
-                margin: EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                    color: Color(0xff2F323C).withOpacity(0.5),
-                    borderRadius: BorderRadius.circular(20)),
-                child: Stack(
-                  children: [
-                    Positioned(
-                      left: -100,
-                      top: 0,
-                      child: SvgPicture.asset(
-                        "assets/arsenal.svg",
-                        color: Colors.white.withOpacity(0.02),
-                        width: 250,
+              GestureDetector(
+                onTap: () => Navigator.push(context,
+                    CupertinoPageRoute(builder: (ctx) => SportsDetails())),
+                child: Container(
+                  width: SizeConfig.width,
+                  margin: EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                      color: Color(0xff2F323C).withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: -100,
+                        top: 0,
+                        child: SvgPicture.asset(
+                          "assets/arsenal.svg",
+                          color: Colors.white.withOpacity(0.02),
+                          width: 250,
+                        ),
                       ),
-                    ),
-                    Positioned(
-                      right: -100,
-                      top: 0,
-                      child: SvgPicture.asset(
-                        "assets/manchester-united.svg",
-                        color: Colors.white.withOpacity(0.02),
-                        width: 250,
+                      Positioned(
+                        right: -100,
+                        top: 0,
+                        child: SvgPicture.asset(
+                          "assets/manchester-united.svg",
+                          color: Colors.white.withOpacity(0.02),
+                          width: 250,
+                        ),
                       ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.all(20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: 100,
-                            decoration: BoxDecoration(
-                              border:
-                                  Border.all(color: Style.appGreen, width: 2),
-                              borderRadius: BorderRadius.circular(100),
-                              color: Color(0xff282B35),
-                            ),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 10),
-                            child: Row(
-                              children: [
-                                CircleAvatar(
-                                    radius: 5, backgroundColor: Style.appGreen),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  "LIVE",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyText1
-                                      .copyWith(
-                                        color: Style.appWhite,
-                                        letterSpacing: 2,
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 40,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Column(
+                      Container(
+                        padding: EdgeInsets.all(20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: 100,
+                              decoration: BoxDecoration(
+                                border:
+                                    Border.all(color: Style.appGreen, width: 2),
+                                borderRadius: BorderRadius.circular(100),
+                                color: Color(0xff282B35),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 10),
+                              child: Row(
                                 children: [
-                                  SvgPicture.asset(
-                                    "assets/arsenal.svg",
-                                    height: 80,
-                                    width: 80,
-                                    color: Style.appWhite,
-                                  ),
+                                  CircleAvatar(
+                                      radius: 5,
+                                      backgroundColor: Style.appGreen),
                                   SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text("Arsenal",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headline6
-                                          .copyWith(
-                                              color: Style.appWhite
-                                                  .withOpacity(0.7)))
-                                ],
-                              ),
-                              SizedBox(
-                                width: 50,
-                              ),
-                              Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        "2",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline2
-                                            .copyWith(
-                                                color: Style.appWhite,
-                                                fontWeight: FontWeight.w700),
-                                      ),
-                                      SizedBox(
-                                        width: 15,
-                                      ),
-                                      Text(
-                                        ":",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline3
-                                            .copyWith(
-                                                color: Style.appWhite
-                                                    .withOpacity(0.5)),
-                                      ),
-                                      SizedBox(
-                                        width: 15,
-                                      ),
-                                      Text(
-                                        "1",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline2
-                                            .copyWith(
-                                                color: Style.appWhite,
-                                                fontWeight: FontWeight.w700),
-                                      ),
-                                    ],
+                                    width: 10,
                                   ),
                                   Text(
-                                    "72'",
+                                    "LIVE",
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyText1
-                                        .copyWith(color: Style.appGreen),
-                                  )
+                                        .copyWith(
+                                          color: Style.appWhite,
+                                          letterSpacing: 2,
+                                        ),
+                                  ),
                                 ],
                               ),
-                              SizedBox(
-                                width: 50,
-                              ),
-                              Column(
-                                children: [
-                                  SvgPicture.asset(
-                                    "assets/manchester-united.svg",
-                                    height: 80,
-                                    width: 80,
-                                    color: Style.appWhite,
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text("Man United",
+                            ),
+                            SizedBox(
+                              height: 40,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Column(
+                                  children: [
+                                    SvgPicture.asset(
+                                      "assets/arsenal.svg",
+                                      height: 80,
+                                      width: 80,
+                                      color: Style.appWhite,
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Text("Arsenal",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline6
+                                            .copyWith(
+                                                color: Style.appWhite
+                                                    .withOpacity(0.7)))
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: 50,
+                                ),
+                                Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "2",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline2
+                                              .copyWith(
+                                                  color: Style.appWhite,
+                                                  fontWeight: FontWeight.w700),
+                                        ),
+                                        SizedBox(
+                                          width: 15,
+                                        ),
+                                        Text(
+                                          ":",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline3
+                                              .copyWith(
+                                                  color: Style.appWhite
+                                                      .withOpacity(0.5)),
+                                        ),
+                                        SizedBox(
+                                          width: 15,
+                                        ),
+                                        Text(
+                                          "1",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline2
+                                              .copyWith(
+                                                  color: Style.appWhite,
+                                                  fontWeight: FontWeight.w700),
+                                        ),
+                                      ],
+                                    ),
+                                    Text(
+                                      "72'",
                                       style: Theme.of(context)
                                           .textTheme
-                                          .headline6
-                                          .copyWith(
-                                              color: Style.appWhite
-                                                  .withOpacity(0.7)))
-                                ],
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 40,
-                          ),
-                          Row(
-                            children: [
-                              Scorecard(
-                                first: "1",
-                                second: "  2.34",
-                              ),
-                              Scorecard(
-                                first: "X",
-                                second: "  5.40",
-                              ),
-                              Scorecard(
-                                first: "2",
-                                second: "  3.14",
-                              )
-                            ],
-                          )
-                        ],
+                                          .bodyText1
+                                          .copyWith(color: Style.appGreen),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: 50,
+                                ),
+                                Column(
+                                  children: [
+                                    SvgPicture.asset(
+                                      "assets/manchester-united.svg",
+                                      height: 80,
+                                      width: 80,
+                                      color: Style.appWhite,
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Text("Man United",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline6
+                                            .copyWith(
+                                                color: Style.appWhite
+                                                    .withOpacity(0.7)))
+                                  ],
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 40,
+                            ),
+                            Row(
+                              children: [
+                                Scorecard(
+                                  first: "1",
+                                  second: "  2.34",
+                                ),
+                                Scorecard(
+                                  first: "X",
+                                  second: "  5.40",
+                                ),
+                                Scorecard(
+                                  first: "2",
+                                  second: "  3.14",
+                                )
+                              ],
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               SizedBox(
@@ -377,7 +345,7 @@ class Scorecard extends StatelessWidget {
         alignment: Alignment.center,
         height: 80,
         decoration: BoxDecoration(
-          color: Color(0xff1C1F2C),
+          color: Style.backgroundColor3,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Text.rich(TextSpan(

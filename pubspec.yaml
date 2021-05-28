@@ -30,6 +30,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^2.1.0
   flutter_svg: ^0.22.0
+  bezier_chart: ^1.0.17+1
+
 
 
 dev_dependencies:
