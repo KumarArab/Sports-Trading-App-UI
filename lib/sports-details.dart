@@ -21,11 +21,14 @@ class SportsDetails extends StatelessWidget {
                 SizedBox(
                   width: 15,
                 ),
-                CircleAvatar(
-                  backgroundColor: Style.backgroundColor2,
-                  child: Container(
-                      margin: EdgeInsets.only(left: 7),
-                      child: Icon(Icons.arrow_back_ios, color: Colors.white)),
+                InkWell(
+                  onTap: () => Navigator.pop(context),
+                  child: CircleAvatar(
+                    backgroundColor: Style.backgroundColor2,
+                    child: Container(
+                        margin: EdgeInsets.only(left: 7),
+                        child: Icon(Icons.arrow_back_ios, color: Colors.white)),
+                  ),
                 ),
                 Expanded(
                   child: Center(
@@ -135,7 +138,10 @@ class SportsDetails extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 15),
           decoration: BoxDecoration(
             color: Style.appWhite,
-            borderRadius: BorderRadius.circular(35),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(16),
+              topRight: Radius.circular(16),
+            ),
           ),
           width: SizeConfig.width,
           child: Column(

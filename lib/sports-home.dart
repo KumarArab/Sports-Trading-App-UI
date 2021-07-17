@@ -96,7 +96,6 @@ class SportsHome extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              width: 100,
                               decoration: BoxDecoration(
                                 border:
                                     Border.all(color: Style.appGreen, width: 2),
@@ -105,7 +104,8 @@ class SportsHome extends StatelessWidget {
                               ),
                               padding: EdgeInsets.symmetric(
                                   horizontal: 20, vertical: 10),
-                              child: Row(
+                              child: Wrap(
+                                crossAxisAlignment: WrapCrossAlignment.center,
                                 children: [
                                   CircleAvatar(
                                       radius: 5,
